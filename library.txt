@@ -16,4 +16,4 @@ langchain-core==0.3.79
 sentencepiece==0.2.1
 pillow==12.0.0
 streamlit==1.48.1
-
+transformers==4.55.0
