@@ -11,7 +11,7 @@ os.environ["HF_HUB_OFFLINE"] = "0"
 # ------------------------------------------------
 # Initialize logger (writes to logs/<module>_timestamp.log)
 # ------------------------------------------------
-logger = setup_logger("chatbot", log_dir="logs", level=logging.DEBUG)
+logger = setup_logger("gemmabot", log_dir="logs", level=logging.DEBUG)
 
 
 class GemmaBot:
@@ -79,3 +79,6 @@ if __name__ == "__main__":
         print(reply)
     except Exception as err:
         logger.exception(f"Failed to run GemmaBot: {err}")
+
+
+

@@ -1,13 +1,13 @@
 # app.py
 import streamlit as st
-from chatbot import GemmaBot
+from metabot import MetaBot
 
 # Title
 st.title("Text Summarizer")
 
 # Initialize the model only once (to avoid reloading on every rerun)
 if "bot" not in st.session_state:
-    st.session_state.bot = GemmaBot()
+    st.session_state.bot = MetaBot()
 
 # User Query
 user_query = st.text_area("Enter your text to summarize:", height=150)
