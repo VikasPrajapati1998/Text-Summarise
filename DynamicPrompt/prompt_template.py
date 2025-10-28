@@ -1,7 +1,7 @@
 # main.py
 import streamlit as st
 from gemmabot import GemmaBot
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import load_prompt
 
 # -----------------------------------------------------
 # Streamlit App: Research Paper Summarizer
@@ -38,40 +38,14 @@ length_input = st.selectbox(
     ["Select...", "Short (1-2 Paragraphs)", "Medium (3-5 Paragraphs)", "Long (Detailed Explanation)"]
 )
 
-user_note = st.text_area("Enter your note (optional):", height=100)
-
 # -----------------------------------------------------
 # Build Prompt Template
 # -----------------------------------------------------
-template = PromptTemplate(
-    template="""
-Summarize the research paper titled "{paper_input}" with the following specifications:
-
-Explanation Style: {style_input}
-Explanation Length: {length_input}
-
-1. Mathematical Details:
-   - Include relevant mathematical equations if present in the paper.
-   - Explain mathematical concepts with simple, intuitive code snippets.
-2. Analogies:
-   - Use relatable analogies to simplify complex ideas.
-3. User Condition:
-   - {user_note}
-
-If certain information is not available in the paper, respond with: 
-"Insufficient information available" instead of guessing.
-
-Ensure the summary is clear, accurate, and aligned with the specified style and length.
-""",
-    input_variables=["paper_input", "style_input", "length_input", "user_note"], 
-    validate_template=True
-)
-
+template = load_prompt('template.json')
 prompt = template.format(
     paper_input=paper_input,
     style_input=style_input,
-    length_input=length_input,
-    user_note=user_note
+    length_input=length_input
 )
 
 # -----------------------------------------------------

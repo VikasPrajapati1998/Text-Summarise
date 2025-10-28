@@ -63,7 +63,8 @@ If certain information is not available in the paper, respond with:
 
 Ensure the summary is clear, accurate, and aligned with the specified style and length.
 """,
-    input_variables=["paper_input", "style_input", "length_input", "user_note"]
+    input_variables=["paper_input", "style_input", "length_input", "user_note"],
+    validate_template=True
 )
 
 prompt = template.format(
